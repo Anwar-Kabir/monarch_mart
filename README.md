@@ -18,7 +18,7 @@ cached_network_image: ^3.2.2
 flutter_cache_manager: ^3.3.0  
 carousel_slider: ^4.1.1  
 
-## API refarence --
+## API reference --
 https://dummyjson.com/  
 https://fakestoreapi.com/  
 
