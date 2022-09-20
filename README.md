@@ -1,6 +1,6 @@
 # monorch_mart
 
-A new Flutter project.
+Flutter e-commerce project. 
 
 ## Getting Started
 
