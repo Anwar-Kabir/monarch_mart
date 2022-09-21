@@ -10,7 +10,7 @@ Monarch Mart. This is flutter e-commerce project. own by Cricketer Shakib Al Has
    
 google_fonts: ^3.0.1  
 liquid_progress_indicator: ^0.4.0  
-flutter_screenutil: ^5.5.4 -- to auto response in diffenent divice screen.  
+flutter_screenutil: ^5.5.4 -- to auto response in diffenent device screen.  
 get: ^4.6.5   
 http: ^0.13.5  
 nb_utils: ^4.6.20  
