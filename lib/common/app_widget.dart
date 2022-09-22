@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
 import 'package:monarch_mart/common/config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -90,11 +91,43 @@ class AppWidget {
     );
   }
 
-  Widget eluvaterButtonLoginPage({required String text}) {
+  Widget editprofileTextField({
+    String helpertext = "",
+    bool obscureText = false,
+  }) {
+    return TextField(
+      textAlign: TextAlign.start,
+      autocorrect: true,
+      textAlignVertical: TextAlignVertical.center,
+      keyboardType: TextInputType.number,
+      obscureText: obscureText,
+      decoration: InputDecoration(
+          helperText: helpertext,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(Radius.circular(4)),
+            borderSide: BorderSide(width: 1, color: AppCon.color.primaryColor),
+          ),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          filled: true,
+          fillColor: Colors.white,
+          //hintText: hint,
+          hintTextDirection: TextDirection.ltr,
+          hintStyle: TextStyle(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w600,
+          )),
+    );
+  }
+
+  Widget elevatedButtonLoginPage({
+    required String text,
+    required void Function()? onPressed,
+  }) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppCon.color.primaryColor,
           side: BorderSide(color: AppCon.color.primaryColor),
@@ -108,6 +141,73 @@ class AppWidget {
         ),
       ),
     );
+  }
+
+  Widget elevatedButtonEditProfile({
+    required String text,
+    required void Function()? onPressed,
+  }) {
+    return Align(
+      alignment: Alignment.topRight,
+      child: SizedBox(
+        width: 200.h,
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppCon.color.primaryColor,
+            side: BorderSide(color: AppCon.color.primaryColor),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          child: Text(
+            text,
+            style: TextStyle(color: Colors.white, fontSize: 16.sp),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget elevatedIconBtnShippingAddress({required void Function()? onPressed}) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton.icon(
+          style: ElevatedButton.styleFrom(
+              backgroundColor: AppCon.color.primaryColor),
+          onPressed: onPressed,
+          icon: const Icon(Icons.add),
+          label: Container()),
+    );
+  }
+
+  Widget addAdress() {
+    return Container(
+      color: AppCon.color.primaryColor,
+    );
+  }
+
+  Widget confirmBtn() {
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: AppCon.color.primaryColor),
+        onPressed: () {},
+        child: const Text("YES"));
+  }
+
+  Widget cancelBtn() {
+    return OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          side: BorderSide(
+            width: 1.0,
+            color: AppCon.color.primaryColor,
+            style: BorderStyle.solid,
+          ),
+        ),
+        onPressed: () {
+          Get.back();
+        },
+        child: const Text("NO"));
   }
 
   Widget monarchlogo() {
@@ -366,6 +466,63 @@ class AppWidget {
         );
       }).toList(),
     );
+  }
+
+  Widget profileListTile({
+    required Widget leading,
+    required String title,
+    String subtitle = "",
+    required Widget trailing,
+    void Function()? onTap,
+  }) {
+    return ListTile(
+        onTap: onTap,
+        textColor: Colors.black87,
+        iconColor: const Color.fromARGB(115, 37, 22, 22),
+        leading: CircleAvatar(
+          backgroundColor: const Color.fromARGB(255, 224, 161, 141),
+          foregroundColor: AppCon.color.primaryColor,
+          radius: 30,
+          child: leading,
+        ),
+        title: Text(
+          title,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0),
+          textScaleFactor: 1.5,
+        ),
+        subtitle: Text(
+          subtitle,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0),
+        ),
+        trailing: trailing);
+  }
+
+  Widget profileListTilecolor({
+    required Widget leading,
+    required String title,
+    String subtitle = "",
+    required Widget trailing,
+  }) {
+    return ListTile(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        tileColor: AppCon.color.primaryColor,
+        textColor: Colors.white,
+        iconColor: Colors.white,
+        leading: CircleAvatar(
+          backgroundColor: const Color.fromARGB(255, 224, 161, 141),
+          foregroundColor: AppCon.color.primaryColor,
+          radius: 30,
+        ),
+        title: Text(
+          title,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0),
+          textScaleFactor: 1.5,
+        ),
+        subtitle: Text(
+          subtitle,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0),
+        ),
+        trailing: trailing);
   }
 }
 

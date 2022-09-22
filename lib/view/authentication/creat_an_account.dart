@@ -74,13 +74,15 @@ class CreatAnAccount extends StatelessWidget {
                         SizedBox(
                           height: 10.h,
                         ),
-                        AppWidget()
-                            .eluvaterButtonLoginPage(text: "create an Account"),
+                        AppWidget().elevatedButtonLoginPage(
+                          text: "create an Account",
+                          onPressed: () {},
+                        ),
                         SizedBox(
                           height: 10.h,
                         ),
-                        AppWidget().eluvaterButtonLoginPage(
-                            text: "Alraedy Registered"),
+                        AppWidget().elevatedButtonLoginPage(
+                            text: "Alraedy Registered", onPressed: (() {})),
                       ],
                     ),
                   ),

@@ -40,4 +40,20 @@ class AppString {
   final String loginWithUserID = "Login with User ID";
   final String dontHaveAnAccount = "Don't have an account ?";
   final String creatAnAccount = "Creat an account";
+  final String moreSettings = "More settings";
+
+  ///profile page text
+  final String basicInformation = "Basic Information";
+  final String name = "Name";
+  final String password = "Password";
+  final String passConform = "Confirm Password";
+  final String updateProfile = "Update Profile";
+  final String passwordhelper = "Password must be at least 6 character ";
+
+  ///logout
+  final String logout = "Log Out";
+  final String logoutAlart = "Do you really want to logout?";
+
+  ///shipping Adress
+  final String noadress = "No address available";
 }

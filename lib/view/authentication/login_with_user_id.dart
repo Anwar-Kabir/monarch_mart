@@ -54,7 +54,10 @@ class LoginWithUserID extends StatelessWidget {
                     SizedBox(
                       height: 20.h,
                     ),
-                    AppWidget().eluvaterButtonLoginPage(text: "Login")
+                    AppWidget().elevatedButtonLoginPage(
+                      text: "Login",
+                      onPressed: () {},
+                    )
                   ]),
                 ),
               ),
