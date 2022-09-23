@@ -43,8 +43,16 @@ class CreatAnAccount extends StatelessWidget {
                       //crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Positioned(
-                            top: 50, left: 40, child: AppWidget().backarrow()),
-                        AppWidget().logowithprimarycolor(),
+                            top: 50,
+                            left: 40,
+                            child: AppWidget().inAppBackButton()),
+                        AppWidget().monarchMartlogoShow(
+                          height: 130.0.h,
+                          width: 130.0.h,
+                          child: Image.asset(
+                            'assets/images/logowithprimarycolor.png',
+                          ),
+                        ),
                         SizedBox(
                           height: 10.h,
                         ),
@@ -54,35 +62,43 @@ class CreatAnAccount extends StatelessWidget {
                         SizedBox(
                           height: 10.h,
                         ),
-                        AppWidget().getTextField(hint: "Enter Your Name"),
+                        AppWidget().loginIDandCreateAccountTextField(
+                            hint: "Enter Your Name"),
                         SizedBox(
                           height: 10.h,
                         ),
-                        AppWidget().getTextField(hint: "Enter Your Email"),
+                        AppWidget().loginIDandCreateAccountTextField(
+                            hint: "Enter Your Email"),
                         SizedBox(
                           height: 10.h,
                         ),
-                        AppWidget().getTextField(hint: "Enter Your Phone"),
+                        AppWidget().loginIDandCreateAccountTextField(
+                            hint: "Enter Your Phone"),
                         SizedBox(
                           height: 10.h,
                         ),
-                        AppWidget().getTextField(hint: "Enter Your Password"),
+                        AppWidget().loginIDandCreateAccountTextField(
+                            hint: "Enter Your Password"),
                         SizedBox(
                           height: 10.h,
                         ),
-                        AppWidget().getTextField(hint: "Confirm Password"),
+                        AppWidget().loginIDandCreateAccountTextField(
+                            hint: "Confirm Password"),
                         SizedBox(
                           height: 10.h,
                         ),
-                        AppWidget().elevatedButtonLoginPage(
+                        AppWidget().elevatedButtonLogin(
+                          width: double.infinity,
                           text: "create an Account",
                           onPressed: () {},
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
-                        AppWidget().elevatedButtonLoginPage(
-                            text: "Alraedy Registered", onPressed: (() {})),
+                        AppWidget().elevatedButtonLogin(
+                            width: double.infinity,
+                            text: "Alraedy Registered",
+                            onPressed: (() {})),
                       ],
                     ),
                   ),
@@ -90,70 +106,6 @@ class CreatAnAccount extends StatelessWidget {
               ),
             ),
           )
-
-          /*  child: Padding( 
-              padding: const EdgeInsets.all(8.0),
-              child: Center(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Container(
-                    height: 400.h,
-                    color: Colors.pink,
-                    child: Expanded(
-                      child: Stack(
-                        clipBehavior: Clip.none, 
-                        children: <Widget>[
-                        Positioned(top: 0, child: AppWidget().backarrow()),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            AppWidget().monarchlogo(),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            Text(AppCon.string.creatAnAccount,
-                                style: TextStyle(
-                                    color: AppCon.color.scaffoldBGColor)),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            AppWidget().getTextField(hint: "Enter Your Name"),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            AppWidget().getTextField(hint: "Enter Your Email"),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            AppWidget().getTextField(hint: "Enter Your Phone"),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            AppWidget()
-                                .getTextField(hint: "Enter Your Password"),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            AppWidget().getTextField(hint: "Confirm Password"),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            AppWidget().eluvaterButtonLoginPage(
-                                text: "create an Account"),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            AppWidget().eluvaterButtonLoginPage(
-                                text: "Alraedy Registered"),
-                          ],
-                        ),
-                      ]),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),*/
         ],
       )),
     );

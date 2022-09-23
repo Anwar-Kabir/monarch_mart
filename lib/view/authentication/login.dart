@@ -1,57 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
+import 'package:monarch_mart/common/app_widget.dart';
 import 'package:monarch_mart/common/config.dart';
+import 'package:monarch_mart/view/authentication/creat_an_account.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
-
-  Widget eluvaterButtonLoginPage({required String text}) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: () {},
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
-          side: BorderSide(color: AppCon.color.primaryColor),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(color: AppCon.color.primaryColor, fontSize: 16.sp),
-        ),
-      ),
-    );
-  }
-
-  Widget getTextField({required String hint}) {
-    return TextField(
-      keyboardType: TextInputType.number,
-      decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: Colors.pink),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: const BorderRadius.all(Radius.circular(4)),
-            borderSide: BorderSide(width: 1, color: AppCon.color.primaryColor),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color: AppCon.color.primaryColor),
-          ),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-          filled: true,
-          fillColor: Colors.white,
-          hintText: hint,
-          hintStyle: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w600,
-          )),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,9 +33,8 @@ class Login extends StatelessWidget {
                     color: AppCon.color.primaryColor,
                   ),
                 ),
-                Container(
-                  color: Colors.white,
-                  height: 230.h,
+                AppWidget().monarchMartlogoShow(
+                  height: 230.0.h,
                   child: Image.asset(
                     'assets/images/logo.jpg',
                   ),
@@ -105,11 +59,15 @@ class Login extends StatelessWidget {
                 SizedBox(
                   height: 10.h,
                 ),
-                getTextField(hint: "Enter Your Phone Numbr"),
+                AppCon.widget.loginIDandCreateAccountTextField(
+                    hint: "Enter Your Phone Numbr"),
                 SizedBox(
                   height: 10.h,
                 ),
-                eluvaterButtonLoginPage(text: (AppCon.string.loginWithOTP)),
+                AppCon.widget.elevatedButtonLogin(
+                    onPressed: () {},
+                    text: (AppCon.string.loginWithOTP),
+                    width: double.infinity),
                 SizedBox(
                   height: 10.h,
                 ),
@@ -123,7 +81,10 @@ class Login extends StatelessWidget {
                 SizedBox(
                   height: 10.h,
                 ),
-                eluvaterButtonLoginPage(text: (AppCon.string.loginWithUserID)),
+                AppCon.widget.elevatedButtonLogin(
+                    onPressed: () {},
+                    text: (AppCon.string.loginWithUserID),
+                    width: double.infinity),
                 SizedBox(
                   height: 10.h,
                 ),
@@ -134,12 +95,17 @@ class Login extends StatelessWidget {
                       color: AppCon.color.primaryTextColorBold,
                       fontWeight: FontWeight.w500),
                 ),
-                Text(
-                  AppCon.string.creatAnAccount,
-                  style: TextStyle(
-                      fontSize: 14.sp,
-                      color: AppCon.color.primaryColor,
-                      fontWeight: FontWeight.w500),
+                InkWell(
+                  onTap: () {
+                    Get.to(CreatAnAccount());
+                  },
+                  child: Text(
+                    AppCon.string.creatAnAccount,
+                    style: TextStyle(
+                        fontSize: 14.sp,
+                        color: AppCon.color.primaryColor,
+                        fontWeight: FontWeight.w500),
+                  ),
                 ),
               ],
             ),

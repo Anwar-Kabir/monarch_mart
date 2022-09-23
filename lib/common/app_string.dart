@@ -1,6 +1,4 @@
 class AppString {
-  // final version = const Text("Build Version munna");
-
   //static const String version = "Build Version munna";
   final String version = "Build Version";
   final String versionNAme = "v0.11.8";
@@ -56,4 +54,7 @@ class AppString {
 
   ///shipping Adress
   final String noadress = "No address available";
+
+  ///URL webview
+  final String url = "https://pub.dev/packages/url_launcher/example";
 }

@@ -30,7 +30,7 @@ class Categories extends StatelessWidget {
       body: SafeArea(
           child: Column(
         children: [
-          AppWidget().getTextField(hint: "Search Category"),
+          AppWidget().loginIDandCreateAccountTextField(hint: "Search Category"),
           Stack(
             clipBehavior: Clip.none,
             children: [

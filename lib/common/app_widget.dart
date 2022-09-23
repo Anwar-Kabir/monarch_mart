@@ -59,24 +59,24 @@ final List<Widget> imageSliders = imgList
     .toList();
 
 class AppWidget {
-  Widget getTextField({required String hint}) {
+  /// This textFild widget use in login with user id and create an acoount page.
+  Widget loginIDandCreateAccountTextField({required String hint}) {
     return TextField(
       textAlign: TextAlign.center,
-      autofocus: true,
       textAlignVertical: TextAlignVertical.center,
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: Colors.pink),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: const BorderRadius.all(Radius.circular(4)),
-            borderSide: BorderSide(width: 1, color: AppCon.color.primaryColor),
+          focusedBorder: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(4)),
+            borderSide: BorderSide(width: 1, color: Colors.grey),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color: AppCon.color.primaryColor),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -91,6 +91,21 @@ class AppWidget {
     );
   }
 
+  /// unused textfield widget, we can use this TextField globaly but code of decoration property complecity we adovid it.
+  Widget monarchMartTextField({
+    String hint = "",
+    String helpertext = "",
+    bool obscureText = false,
+    InputDecoration? decoration,
+  }) {
+    return TextField(
+        textAlign: TextAlign.center,
+        textAlignVertical: TextAlignVertical.center,
+        keyboardType: TextInputType.number,
+        decoration: decoration);
+  }
+
+  /// This textfield widget use in edit profile. broder less text field.
   Widget editprofileTextField({
     String helpertext = "",
     bool obscureText = false,
@@ -102,30 +117,32 @@ class AppWidget {
       keyboardType: TextInputType.number,
       obscureText: obscureText,
       decoration: InputDecoration(
-          helperText: helpertext,
-          focusedBorder: OutlineInputBorder(
-            borderRadius: const BorderRadius.all(Radius.circular(4)),
-            borderSide: BorderSide(width: 1, color: AppCon.color.primaryColor),
-          ),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-          filled: true,
-          fillColor: Colors.white,
-          //hintText: hint,
-          hintTextDirection: TextDirection.ltr,
-          hintStyle: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w600,
-          )),
+        helperText: helpertext,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(4)),
+          borderSide: BorderSide(width: 1, color: AppCon.color.primaryColor),
+        ),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        filled: true,
+        fillColor: Colors.white,
+        hintTextDirection: TextDirection.ltr,
+        hintStyle: TextStyle(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     );
   }
 
-  Widget elevatedButtonLoginPage({
+  /// This Elevated button widget for log in page, this elevated button is full width.
+  Widget elevatedButtonLogin({
     required String text,
     required void Function()? onPressed,
+    double? width,
   }) {
     return SizedBox(
-      width: double.infinity,
+      width: width,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -143,6 +160,7 @@ class AppWidget {
     );
   }
 
+  /// This Elevated button widget for Edit profile page, this elevated button width is fix() and aline in topRight.
   Widget elevatedButtonEditProfile({
     required String text,
     required void Function()? onPressed,
@@ -169,24 +187,30 @@ class AppWidget {
     );
   }
 
-  Widget elevatedIconBtnShippingAddress({required void Function()? onPressed}) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton.icon(
-          style: ElevatedButton.styleFrom(
-              backgroundColor: AppCon.color.primaryColor),
-          onPressed: onPressed,
-          icon: const Icon(Icons.add),
-          label: Container()),
+  /// This is stack button, for add new shipping address.
+  Widget addshippingAdress({
+    Function()? onTap,
+  }) {
+    return InkWell(
+      splashColor: Colors.green,
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+            color: AppCon.color.primaryColor,
+            borderRadius: const BorderRadius.all(Radius.circular(10))),
+        width: double.infinity,
+        height: 38.0.h,
+        child: Stack(alignment: Alignment.center, children: const [
+          Icon(
+            Icons.add,
+            color: Colors.white,
+          )
+        ]),
+      ),
     );
   }
 
-  Widget addAdress() {
-    return Container(
-      color: AppCon.color.primaryColor,
-    );
-  }
-
+  ///getx default dialog confirmBtn,
   Widget confirmBtn() {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -195,6 +219,7 @@ class AppWidget {
         child: const Text("YES"));
   }
 
+  ///getx default dialog cancelBtn,
   Widget cancelBtn() {
     return OutlinedButton(
         style: OutlinedButton.styleFrom(
@@ -210,35 +235,21 @@ class AppWidget {
         child: const Text("NO"));
   }
 
-  Widget monarchlogo() {
-    return Container(
-      color: Colors.blue,
-      height: 130.h,
-      child: Image.asset(
-        'assets/images/logo.jpg',
-      ),
-    );
+  /// this custom widget for monarch mart logo on login & creat acoount page.
+  Widget monarchMartlogoShow({double? width, double? height, Widget? child}) {
+    return SizedBox(height: height, width: width, child: child);
   }
 
-  Widget logowithprimarycolor() {
-    return Container(
-      color: Colors.blue,
-      height: 130.h,
-      width: 130.h,
-      child: Image.asset(
-        'assets/images/logowithprimarycolor.png',
-      ),
-    );
-  }
-
-  Widget backarrow() {
+  /// In App Costom back Button.
+  Widget inAppBackButton() {
     return Container(
       color: AppCon.color.primaryColor,
-      height: 50.h,
-      //width: double.infinity,
+      height: 50.0.h,
       child: IconButton(
         alignment: Alignment.topLeft,
-        onPressed: () {},
+        onPressed: () {
+          Get.back();
+        },
         icon: const Icon(
           Icons.arrow_back,
         ),
@@ -247,6 +258,7 @@ class AppWidget {
     );
   }
 
+  /// custom grid view on categories page.
   Widget categoriesgridview() {
     return GridView.count(
       crossAxisCount: 4,
@@ -276,6 +288,7 @@ class AppWidget {
     ),
   );
 
+  ///product in card  view
   Widget homeproductview() {
     return SizedBox(
       height: 220.h,
@@ -380,6 +393,7 @@ class AppWidget {
     );
   }
 
+  /// home page catgories in row
   Widget homeCategory() {
     return Row(
       children: [
@@ -399,7 +413,6 @@ class AppWidget {
   /// CarouselWithIndicator
 
   /// home middel carousel_slider
-
   Widget homesecondCarouselSlider() {
     return CarouselSlider(
       options: CarouselOptions(
@@ -414,7 +427,6 @@ class AppWidget {
         autoPlayAnimationDuration: const Duration(milliseconds: 800),
         autoPlayCurve: Curves.fastOutSlowIn,
         enlargeCenterPage: true,
-        //onPageChanged: callbackFunction,
         scrollDirection: Axis.horizontal,
       ),
       items: [1, 2, 3, 4, 5].map((i) {
@@ -434,6 +446,7 @@ class AppWidget {
     );
   }
 
+  /// home thried carousel_slider
   Widget homethirdCarouselSlider() {
     return CarouselSlider(
       options: CarouselOptions(
@@ -448,7 +461,6 @@ class AppWidget {
         autoPlayAnimationDuration: const Duration(milliseconds: 800),
         autoPlayCurve: Curves.fastOutSlowIn,
         enlargeCenterPage: true,
-        //onPageChanged: callbackFunction,
         scrollDirection: Axis.horizontal,
       ),
       items: [1, 2, 3, 4, 5].map((i) {
@@ -468,17 +480,21 @@ class AppWidget {
     );
   }
 
-  Widget profileListTile({
-    required Widget leading,
-    required String title,
-    String subtitle = "",
-    required Widget trailing,
-    void Function()? onTap,
-  }) {
+  ///Profile list Tile
+  Widget profileListTile(
+      {required Widget leading,
+      required String title,
+      String subtitle = "",
+      required Widget trailing,
+      void Function()? onTap,
+      ShapeBorder? shape,
+      Color? tileColor}) {
     return ListTile(
         onTap: onTap,
         textColor: Colors.black87,
         iconColor: const Color.fromARGB(115, 37, 22, 22),
+        shape: shape,
+        tileColor: tileColor,
         leading: CircleAvatar(
           backgroundColor: const Color.fromARGB(255, 224, 161, 141),
           foregroundColor: AppCon.color.primaryColor,
@@ -497,6 +513,7 @@ class AppWidget {
         trailing: trailing);
   }
 
+  ///Profile listtile with  tile color, shape and text color white.
   Widget profileListTilecolor({
     required Widget leading,
     required String title,

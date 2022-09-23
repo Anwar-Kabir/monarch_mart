@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
 import 'package:monarch_mart/common/config.dart';
 import 'package:monarch_mart/common/app_widget.dart';
 
@@ -21,16 +22,15 @@ class LoginWithUserID extends StatelessWidget {
                 width: double.infinity,
                 child: IconButton(
                   alignment: Alignment.topLeft,
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.back();
+                  },
                   icon: const Icon(
                     Icons.arrow_back,
                   ),
                   color: AppCon.color.primaryColor,
                 ),
               ),
-
-              ///comment
-
               Expanded(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
@@ -44,25 +44,31 @@ class LoginWithUserID extends StatelessWidget {
                         ),
                       ),
                     ),
-                    AppWidget().getTextField(
-                      hint: "Enter Your Email",
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: AppWidget().loginIDandCreateAccountTextField(
+                        hint: "Enter Your Email",
+                      ),
                     ),
                     SizedBox(
                       height: 10.h,
                     ),
-                    AppWidget().getTextField(hint: "Enter Your Password"),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: AppWidget().loginIDandCreateAccountTextField(
+                          hint: "Enter Your Password"),
+                    ),
                     SizedBox(
                       height: 20.h,
                     ),
-                    AppWidget().elevatedButtonLoginPage(
+                    AppWidget().elevatedButtonLogin(
+                      width: double.infinity,
                       text: "Login",
                       onPressed: () {},
                     )
                   ]),
                 ),
               ),
-
-              /// comment
             ],
           ),
         ),

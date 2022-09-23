@@ -19,9 +19,11 @@ class _ShippingAdressState extends State<ShippingAdress> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppCon.widget.elevatedIconBtnShippingAddress(
-              onPressed: () {},
-            ),
+            AppCon.widget.addshippingAdress(onTap: () {
+              setState(() {
+                AppCon.widget.loginIDandCreateAccountTextField(hint: "hhhhhh");
+              });
+            }),
             const SizedBox(
               height: 20,
             ),

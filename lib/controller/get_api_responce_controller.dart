@@ -8,8 +8,6 @@ class GetAPI {
         await http.get(Uri.parse('https://fakestoreapi.com/products'));
     var data = jsonDecode(response.body);
 
-    //print(data.toString());
-
     if (response.statusCode == 200) {
       return Fakeapi.fromJson(data);
     } else {
@@ -21,11 +19,6 @@ class GetAPI {
     final response = await http
         .get(Uri.parse('https://jsonplaceholder.typicode.com/albums'));
 
-    /// json decode to object
-    //var data = jsonDecode(response.body);
-
-    // Appropriate action depending upon the
-    // server response
     if (response.statusCode == 200) {
       return Fakeapi.fromJson(json.decode(response.body));
     } else {

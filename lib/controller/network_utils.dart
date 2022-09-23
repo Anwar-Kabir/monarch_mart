@@ -12,14 +12,8 @@ class Network {
     if (await isNetworkAvailable()) {
       Response response;
 
-      /* var headers = {
-        'Content-type': 'application/json',
-        'Accept': 'application/json',
-      }; */
-
-      //print("Headers: $headers");
       response = await get(
-        Uri.parse(AppCon.api.product), /* headers: headers */
+        Uri.parse(AppCon.api.product),
       );
 
       return response;

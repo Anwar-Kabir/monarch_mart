@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:monarch_mart/common/config.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class ProfileWebView extends StatefulWidget {
   const ProfileWebView({super.key});
@@ -9,31 +12,22 @@ class ProfileWebView extends StatefulWidget {
 }
 
 class _ProfileWebViewState extends State<ProfileWebView> {
-  final Uri toLaunch =
-      Uri.parse('https://pub.dev/packages/url_launcher/example');
-
-  Future<void> _launchInWebViewOrVC(Uri url) async {
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.inAppWebView,
-      webViewConfiguration: const WebViewConfiguration(
-          headers: <String, String>{'my_header_key': 'my_header_value'}),
-    )) {
-      throw 'Could not launch $url';
-    }
-  }
-
   @override
   void initState() {
     super.initState();
-    _launchInWebViewOrVC(toLaunch);
+    // Enable virtual display.
+    if (Platform.isAndroid) WebView.platform = AndroidWebView();
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(title: const Text("Hello")), body: Container()),
+        appBar: AppBar(title: const Text("Hello")),
+        body: WebView(
+          initialUrl: AppCon.string.url,
+        ),
+      ),
     );
   }
 }
