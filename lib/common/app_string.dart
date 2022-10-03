@@ -40,6 +40,10 @@ class AppString {
   final String creatAnAccount = "Creat an account";
   final String moreSettings = "More settings";
 
+  ///sign up page
+  final String createAnAccount = "Creat an Account";
+  final String alreadyRegistered = "Already Registered";
+
   ///profile page text
   final String basicInformation = "Basic Information";
   final String name = "Name";
@@ -47,6 +51,7 @@ class AppString {
   final String passConform = "Confirm Password";
   final String updateProfile = "Update Profile";
   final String passwordhelper = "Password must be at least 6 character ";
+  final String editprofiletitle = "Edit Profile";
 
   ///logout
   final String logout = "Log Out";
@@ -57,4 +62,50 @@ class AppString {
 
   ///URL webview
   final String url = "https://pub.dev/packages/url_launcher/example";
+
+  ///Add user address
+  final String nameAdress = "Name *";
+  final String dateOfBirth = "Date of Birth";
+  final String gender = "Gender *";
+  final String gendervalu = "Select Gender";
+  final String address = "Address *";
+  final String postal = "Postal *";
+  final String city = "City *";
+  final String phoneadress = "Phone *";
+
+  ///Home page
+  final String topSellers = "Top Sellers";
+  final String topBrands = "Top Brands";
+  final String bestSelling = "Best Selling";
+  final String newArrival = "New Arrival";
+  final String alloffers = "All offers";
+  final String topCategories = "Top Categories";
+  final String featuredProducts = "Featured Products";
+  final String onSaleProducts = "On Sale Products";
+  final String fashion = "Fashion";
+  final String electronicsAppliance = "Electronics And Appliance";
+  final String viewAll = "View All";
+
+  /// add to card text
+  final String totalAmount = "Total Amount";
+  final String proceedToOrder = "Proceed To Order";
+
+  ///navigation  drawer
+  final String myAccount = "My Account";
+  final String privacyPolicy = "Privacy Policy";
+  final String returnPolicy = "Return Policy";
+  final String terms = "Terms";
+  final String drawerLogout = "Logout";
+  final String hellosignIn = "Hello Sign in";
+
+  ///update needed, date - October 2, 2022
+  final String updateNeeded = "UPDATE NEEDED!";
+  final String updatdContanted = "Please updated your Monarch Mart App";
+  final String updateMonarchMart = "UPDATE";
+
+  ///checkout
+  final String checkOutwithbkash = "Checkout with Bkash";
+  final String checkOutwithNagad = "Checkout with Nagad";
+  final String checkOutwithUpay = "Checkout with Upay";
+  final String cashonDelivery = "Cash on delivery";
 }

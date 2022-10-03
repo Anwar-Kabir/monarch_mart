@@ -16,21 +16,7 @@ class LoginWithUserID extends StatelessWidget {
           padding: EdgeInsets.all(8.0.h),
           child: Column(
             children: [
-              Container(
-                color: Colors.white,
-                height: 50.h,
-                width: double.infinity,
-                child: IconButton(
-                  alignment: Alignment.topLeft,
-                  onPressed: () {
-                    Get.back();
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back,
-                  ),
-                  color: AppCon.color.primaryColor,
-                ),
-              ),
+              AppCon.widget.backbuttonPrimaryColor(),
               Expanded(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
@@ -47,6 +33,9 @@ class LoginWithUserID extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: AppWidget().loginIDandCreateAccountTextField(
+                        keyboardType: TextInputType.text,
+                        textAlign: TextAlign.center,
+                        textAlignVertical: TextAlignVertical.center,
                         hint: "Enter Your Email",
                       ),
                     ),
@@ -56,16 +45,29 @@ class LoginWithUserID extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: AppWidget().loginIDandCreateAccountTextField(
+                          keyboardType: TextInputType.text,
+                          textAlign: TextAlign.center,
+                          textAlignVertical: TextAlignVertical.center,
                           hint: "Enter Your Password"),
                     ),
                     SizedBox(
                       height: 20.h,
                     ),
-                    AppWidget().elevatedButtonLogin(
-                      width: double.infinity,
-                      text: "Login",
-                      onPressed: () {},
-                    )
+                    AppCon.widget.customContainerButton(
+                        onTap: () {
+                          Get.to(const LoginWithUserID());
+                        },
+                        child: Center(
+                          child: Text(
+                            AppCon.string.login,
+                            style:
+                                TextStyle(color: AppCon.color.scaffoldBGColor),
+                          ),
+                        ),
+                        colorBG: AppCon.color.primaryColor,
+                        colorBorder: AppCon.color.primaryColor,
+                        width: double.infinity,
+                        height: 45.0.h),
                   ]),
                 ),
               ),

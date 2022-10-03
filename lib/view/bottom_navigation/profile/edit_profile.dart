@@ -22,6 +22,8 @@ class _EditProfileState extends State<EditProfile> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                AppCon.widget
+                    .inAppBackButton(text: AppCon.string.editprofiletitle),
                 SizedBox(
                   height: 150.0.h,
                 ),

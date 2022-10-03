@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:monarch_mart/view/authentication/login.dart';
+import 'package:monarch_mart/common/config.dart';
 
 class CardMonarch extends StatefulWidget {
   const CardMonarch({super.key});
@@ -11,10 +11,8 @@ class CardMonarch extends StatefulWidget {
 class _CardMonarchState extends State<CardMonarch> {
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(
-        body: Login(),
-      ),
+    return SafeArea(
+      child: Scaffold(body: AppCon.widget.addToCardProductListView()),
     );
   }
 }

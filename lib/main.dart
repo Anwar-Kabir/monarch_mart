@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:monarch_mart/common/app_dep_inj.dart';
 import 'package:monarch_mart/view/splash_screen.dart';
 
 void main() {
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       builder: ((context, child) => GetMaterialApp(
+            initialBinding: GetxDependencyInjection(),
             title: 'Flutter Demo',
             theme: ThemeData(
               primarySwatch: Colors.blue,

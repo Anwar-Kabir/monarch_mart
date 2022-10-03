@@ -4,6 +4,7 @@ import 'package:get/route_manager.dart';
 import 'package:monarch_mart/common/app_widget.dart';
 import 'package:monarch_mart/common/config.dart';
 import 'package:monarch_mart/view/authentication/creat_an_account.dart';
+import 'package:monarch_mart/view/authentication/login_with_user_id.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -20,21 +21,10 @@ class Login extends StatelessWidget {
             scrollDirection: Axis.vertical,
             child: Column(
               children: [
-                Container(
-                  color: Colors.white,
-                  height: 50.h,
-                  width: double.infinity,
-                  child: IconButton(
-                    alignment: Alignment.topLeft,
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.arrow_back,
-                    ),
-                    color: AppCon.color.primaryColor,
-                  ),
-                ),
-                AppWidget().monarchMartlogoShow(
+                AppCon.widget.backbuttonPrimaryColor(),
+                AppWidget().monarchMartlogotransparent(
                   height: 230.0.h,
+                  width: 190.0.w,
                   child: Image.asset(
                     'assets/images/logo.jpg',
                   ),
@@ -42,9 +32,9 @@ class Login extends StatelessWidget {
                 Text(
                   AppCon.string.login,
                   style: TextStyle(
-                      color: AppCon.color.primaryColor,
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold),
+                    color: AppCon.color.primaryColor,
+                    fontSize: 20.sp,
+                  ),
                 ),
                 SizedBox(
                   height: 10.h,
@@ -60,14 +50,25 @@ class Login extends StatelessWidget {
                   height: 10.h,
                 ),
                 AppCon.widget.loginIDandCreateAccountTextField(
-                    hint: "Enter Your Phone Numbr"),
+                  textAlign: TextAlign.justify,
+                  keyboardType: TextInputType.number,
+                  hint: "Enter Your Phone Number",
+                  prefixIcon: AppCon.widget.flagTextFiedLogin(),
+                ),
                 SizedBox(
                   height: 10.h,
                 ),
-                AppCon.widget.elevatedButtonLogin(
-                    onPressed: () {},
-                    text: (AppCon.string.loginWithOTP),
-                    width: double.infinity),
+                AppCon.widget.customContainerButton(
+                    onTap: () {},
+                    child: Center(
+                      child: Text(
+                        AppCon.string.loginWithOTP,
+                        style: TextStyle(color: AppCon.color.primaryColor),
+                      ),
+                    ),
+                    colorBorder: AppCon.color.primaryColor,
+                    width: double.infinity,
+                    height: 45.0.h),
                 SizedBox(
                   height: 10.h,
                 ),
@@ -81,10 +82,19 @@ class Login extends StatelessWidget {
                 SizedBox(
                   height: 10.h,
                 ),
-                AppCon.widget.elevatedButtonLogin(
-                    onPressed: () {},
-                    text: (AppCon.string.loginWithUserID),
-                    width: double.infinity),
+                AppCon.widget.customContainerButton(
+                    onTap: () {
+                      Get.to(const LoginWithUserID());
+                    },
+                    child: Center(
+                      child: Text(
+                        AppCon.string.loginWithUserID,
+                        style: TextStyle(color: AppCon.color.primaryColor),
+                      ),
+                    ),
+                    colorBorder: AppCon.color.primaryColor,
+                    width: double.infinity,
+                    height: 45.0.h),
                 SizedBox(
                   height: 10.h,
                 ),

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:monarch_mart/common/config.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -10,6 +9,8 @@ class ProfileWebView extends StatefulWidget {
   @override
   State<ProfileWebView> createState() => _ProfileWebViewState();
 }
+
+dynamic position = 1;
 
 class _ProfileWebViewState extends State<ProfileWebView> {
   @override
@@ -23,9 +24,31 @@ class _ProfileWebViewState extends State<ProfileWebView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: const Text("Hello")),
-        body: WebView(
-          initialUrl: AppCon.string.url,
+        body: Column(
+          children: [
+            AppCon.widget.inAppBackButton(
+              text: "abc",
+            ),
+            Expanded(
+              child: IndexedStack(index: position, children: <Widget>[
+                WebView(
+                  initialUrl: 'https://google.com',
+                  javascriptMode: JavascriptMode.unrestricted,
+                  onPageStarted: (value) {
+                    setState(() {
+                      position = 1;
+                    });
+                  },
+                  onPageFinished: (value) {
+                    setState(() {
+                      position = 0;
+                    });
+                  },
+                ),
+                const Center(child: CircularProgressIndicator()),
+              ]),
+            )
+          ],
         ),
       ),
     );

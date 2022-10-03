@@ -59,13 +59,38 @@ final List<Widget> imageSliders = imgList
     .toList();
 
 class AppWidget {
+  ///Type - Widget Diolog, for - checking app update available or not, date - October 2, 2022
+
+  Widget isUpdateAvailable({context}) {
+    return AlertDialog(
+      title: Text(
+        AppCon.string.updateNeeded,
+        style: TextStyle(color: AppCon.color.primaryColor),
+      ),
+      actions: [
+        AppCon.widget.elevatedButtonEditProfile(
+            text: AppCon.string.updateMonarchMart, onPressed: () {})
+      ],
+      content: Text(AppCon.string.updatdContanted),
+    );
+  }
+
   /// This textFild widget use in login with user id and create an acoount page.
-  Widget loginIDandCreateAccountTextField({required String hint}) {
+  Widget loginIDandCreateAccountTextField({
+    required String hint,
+    Widget? prefixIcon,
+    required TextAlign textAlign,
+    TextAlignVertical? textAlignVertical,
+    TextInputType? keyboardType,
+    int? maxLength,
+  }) {
     return TextField(
-      textAlign: TextAlign.center,
-      textAlignVertical: TextAlignVertical.center,
-      keyboardType: TextInputType.number,
+      maxLength: maxLength,
+      textAlign: textAlign,
+      textAlignVertical: textAlignVertical,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
+          prefixIcon: prefixIcon,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: Colors.grey),
@@ -74,12 +99,12 @@ class AppWidget {
             borderRadius: BorderRadius.all(Radius.circular(4)),
             borderSide: BorderSide(width: 1, color: Colors.grey),
           ),
-          enabledBorder: OutlineInputBorder(
+          /* enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: Colors.grey),
-          ),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          ), */
+          isDense: true,
+          contentPadding: const EdgeInsets.all(8),
           filled: true,
           fillColor: Colors.white,
           hintText: hint,
@@ -88,6 +113,32 @@ class AppWidget {
             fontSize: 14.sp,
             fontWeight: FontWeight.w600,
           )),
+    );
+  }
+
+  /// this is text field with country flag. login page.
+  Widget flagTextFiedLogin() {
+    return IntrinsicHeight(
+      child: SizedBox(
+        width: 91.0.h,
+        child: Row(
+          children: [
+            SizedBox(width: 10.0.h),
+            SizedBox(
+              height: 25.0.h,
+              width: 25.0.h,
+              child: Image.asset(AppCon.images.bdlogo),
+            ),
+            SizedBox(width: 5.0.h),
+            const Text("+88"),
+            SizedBox(width: 10.0.h),
+            const VerticalDivider(
+              color: Colors.black,
+              thickness: 1,
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -117,13 +168,13 @@ class AppWidget {
       keyboardType: TextInputType.number,
       obscureText: obscureText,
       decoration: InputDecoration(
+        isDense: true,
         helperText: helpertext,
         focusedBorder: OutlineInputBorder(
           borderRadius: const BorderRadius.all(Radius.circular(4)),
           borderSide: BorderSide(width: 1, color: AppCon.color.primaryColor),
         ),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        contentPadding: const EdgeInsets.all(8),
         filled: true,
         fillColor: Colors.white,
         hintTextDirection: TextDirection.ltr,
@@ -160,6 +211,31 @@ class AppWidget {
     );
   }
 
+  ///widget ElevatedButton.icon for navigation drawer bar
+  Widget drawerElevatedButtonIcon({
+    required Widget icon,
+    required Widget label,
+    double? width,
+    double? height,
+  }) {
+    return SizedBox(
+      height: height,
+      width: width,
+      child: ElevatedButton.icon(
+        onPressed: () {},
+        icon: icon,
+        label: label,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppCon.color.primaryColor,
+          side: BorderSide(color: AppCon.color.primaryColor),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
+    );
+  }
+
   /// This Elevated button widget for Edit profile page, this elevated button width is fix() and aline in topRight.
   Widget elevatedButtonEditProfile({
     required String text,
@@ -188,72 +264,306 @@ class AppWidget {
   }
 
   /// This is stack button, for add new shipping address.
-  Widget addshippingAdress({
+  Widget customContainerButtonIconAndBackgroudColor({
     Function()? onTap,
+    required Widget icon,
+    double? width,
+    double? height,
+    Color? color,
+    required Color colorBorder,
   }) {
     return InkWell(
-      splashColor: Colors.green,
+      //splashColor: Colors.green,
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            color: AppCon.color.primaryColor,
-            borderRadius: const BorderRadius.all(Radius.circular(10))),
-        width: double.infinity,
-        height: 38.0.h,
-        child: Stack(alignment: Alignment.center, children: const [
-          Icon(
-            Icons.add,
-            color: Colors.white,
-          )
-        ]),
+          color: color,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(10),
+          ),
+          border: Border.all(
+            color: colorBorder, //                   <--- border color
+            width: 1.0,
+          ),
+        ),
+        width: width,
+        height: height,
+        child: Stack(alignment: Alignment.center, children: [icon]),
       ),
     );
   }
 
+  var items = [
+    'Male',
+    'Female',
+    'Others',
+  ];
+
+  ///this is DropdownButton widget for select gender.
+  Widget dropdownbutton(
+    void Function(String?) onChanged,
+  ) {
+    return DropdownButton(
+      value: AppCon.string.gendervalu,
+      icon: const Icon(Icons.arrow_drop_down),
+      items: items.map((String items) {
+        return DropdownMenuItem(
+          value: items,
+          child: Text(items),
+        );
+      }).toList(),
+      onChanged: onChanged,
+    );
+  }
+
+  /// gender drop down
+  Widget genderDropDown(
+      {required int value, required Function(dynamic) onChangedd}) {
+    return DropdownButton(
+        hint: const Text("hello"),
+        value: value,
+        items: const [
+          DropdownMenuItem(
+            value: 1,
+            child: Text("Male"),
+          ),
+          DropdownMenuItem(
+            value: 2,
+            child: Text("Female"),
+          ),
+          DropdownMenuItem(value: 3, child: Text("Others")),
+        ],
+        onChanged: onChangedd);
+  }
+
   ///getx default dialog confirmBtn,
-  Widget confirmBtn() {
-    return ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            backgroundColor: AppCon.color.primaryColor),
-        onPressed: () {},
-        child: const Text("YES"));
+  Widget confirmBtn(
+      {required Color backgroundColor, required String actionName}) {
+    return SizedBox(
+      width: 100.0.h,
+      child: ElevatedButton(
+          style: ElevatedButton.styleFrom(backgroundColor: backgroundColor),
+          onPressed: () {},
+          child: Text(actionName)),
+    );
   }
 
   ///getx default dialog cancelBtn,
-  Widget cancelBtn() {
-    return OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          side: BorderSide(
+  Widget cancelBtnOutlinedButton({
+    required Color color,
+    required String actionName,
+    double? width,
+    double? height,
+  }) {
+    return SizedBox(
+      height: height,
+      width: width,
+      child: OutlinedButton(
+          style: OutlinedButton.styleFrom(
+            side: BorderSide(
+              width: 1.0,
+              color: color,
+              style: BorderStyle.solid,
+            ),
+          ),
+          onPressed: () {
+            Get.back();
+          },
+          child: Text(actionName)),
+    );
+  }
+
+  Widget customContainerButton({
+    double? width,
+    double? height,
+    Color? colorBG,
+    required Color colorBorder,
+    Widget? child,
+    Function()? onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+          color: colorBG,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(10),
+          ),
+          border: Border.all(
+            color: colorBorder,
             width: 1.0,
-            color: AppCon.color.primaryColor,
-            style: BorderStyle.solid,
           ),
         ),
-        onPressed: () {
-          Get.back();
-        },
-        child: const Text("NO"));
+        child: child,
+      ),
+    );
   }
 
   /// this custom widget for monarch mart logo on login & creat acoount page.
-  Widget monarchMartlogoShow({double? width, double? height, Widget? child}) {
+  Widget monarchMartlogotransparent(
+      {double? width, double? height, Widget? child}) {
     return SizedBox(height: height, width: width, child: child);
   }
 
-  /// In App Costom back Button.
-  Widget inAppBackButton() {
-    return Container(
-      color: AppCon.color.primaryColor,
-      height: 50.0.h,
-      child: IconButton(
-        alignment: Alignment.topLeft,
-        onPressed: () {
-          Get.back();
-        },
-        icon: const Icon(
-          Icons.arrow_back,
+  ///This is backbutton with back button with stact text as page title.
+  Widget inAppBackButton({String text = ""}) {
+    return Stack(
+      children: [
+        //AppCon.widget.inAppBackButton(),
+        Container(
+          color: AppCon.color.scaffoldBGColor,
+          height: 35.0.h,
+          width: double.infinity,
+          child: IconButton(
+            alignment: Alignment.topLeft,
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+            ),
+            color: AppCon.color.backButtontColorBlack,
+          ),
         ),
-        color: AppCon.color.scaffoldBGColor,
+
+        Positioned(top: 9.0.h, right: 160.0.h, child: Text(text))
+      ],
+    );
+  }
+
+  /// this is back button. login page.
+  Widget backbuttonPrimaryColor({Color? coloricon}) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Container(
+        color: Colors.transparent,
+        height: 50.0.h,
+        width: 50.0.w,
+        child: IconButton(
+          alignment: Alignment.topLeft,
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+          ),
+          color: coloricon,
+        ),
+      ),
+    );
+  }
+
+  /// home top dawer and search container.
+  Widget homeTopDawarAndSearch(
+      {required void Function()? onPressed,
+      required void Function()? onPressedsearch}) {
+    return Stack(
+      children: [
+        Container(
+          height: 45.h,
+          width: double.infinity.w,
+          decoration: const BoxDecoration(
+            color: Color.fromARGB(179, 202, 186, 186),
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
+            ),
+          ),
+        ),
+        Positioned(
+          top: 2,
+          left: 10,
+          bottom: 2,
+          child: IconButton(
+            onPressed: onPressed,
+            icon: const Icon(
+              Icons.menu,
+            ),
+          ),
+        ),
+        Positioned(
+          top: 2,
+          right: 10,
+          bottom: 2,
+          child: IconButton(
+            onPressed: onPressedsearch,
+            icon: const Icon(Icons.search),
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// home screeen navigation drawer.
+  Widget homeDrawer() {
+    return Drawer(
+      child: ListView(
+        // Important: Remove any padding from the ListView.
+        padding: const EdgeInsets.all(10.0),
+        children: [
+          const SizedBox(
+            height: 30,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              AppCon.widget.drawerElevatedButtonIcon(
+                height: 38.0.h,
+                width: 160.0.w,
+                icon: Icon(Icons.account_circle,
+                    color: AppCon.color.scaffoldBGColor),
+                label: Text(AppCon.string.hellosignIn),
+              ),
+              AppCon.widget.customContainerButtonIconAndBackgroudColor(
+                  colorBorder: AppCon.color.primaryColor,
+                  icon: Icon(
+                    Icons.close,
+                    color: AppCon.color.primaryColor,
+                  ),
+                  height: 38.0.h,
+                  width: 38.0.w,
+                  color: AppCon.color.scaffoldBGColor,
+                  onTap: () {})
+            ],
+          ),
+          ListTile(
+            dense: true,
+            visualDensity: const VisualDensity(vertical: 0),
+            leading: Text(AppCon.string.myAccount),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            onTap: () {},
+          ),
+          ListTile(
+            dense: true,
+            visualDensity: const VisualDensity(vertical: 0),
+            leading: Text(AppCon.string.privacyPolicy),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            onTap: () {},
+          ),
+          ListTile(
+            dense: true,
+            visualDensity: const VisualDensity(vertical: 0),
+            leading: Text(AppCon.string.returnPolicy),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            onTap: () {},
+          ),
+          ListTile(
+            dense: true,
+            visualDensity: const VisualDensity(vertical: 0),
+            leading: Text(AppCon.string.terms),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            onTap: () {},
+          ),
+          ListTile(
+            dense: true,
+            visualDensity: const VisualDensity(vertical: 0),
+            leading: Text(AppCon.string.drawerLogout),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            onTap: () {},
+          ),
+        ],
       ),
     );
   }
@@ -393,32 +703,324 @@ class AppWidget {
     );
   }
 
-  /// home page catgories in row
-  Widget homeCategory() {
+  /// home page catgories in top, container, icon, bg color and text.
+  Widget homeTopCategory() {
+    return SizedBox(
+      height: 65.0.h,
+      width: double.infinity,
+      child: Row(
+        children: [
+          Column(
+            children: [
+              Container(
+                height: 40.0.h,
+                width: 55.0.h,
+                color: AppCon.color.homeTopCategorycontainerBG,
+                child: Icon(
+                  Icons.home,
+                  color: AppCon.color.primaryColor,
+                ),
+              ),
+              SizedBox(
+                height: 5.0.h,
+              ),
+              Text(
+                "Top Seller",
+                style: TextStyle(fontSize: 12.0.sp),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  /// home scrollviw 2nd catagories, image and text.
+  Widget homeSecondCategories() {
+    return Container(
+      height: 128.0.h,
+      width: double.infinity,
+      color: AppCon.color.primaryColor,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  AppCon.string.topCategories,
+                  style: TextStyle(
+                    color: AppCon.color.scaffoldBGColor,
+                  ),
+                ),
+                const Spacer(),
+                Container(
+                  height: 25.0.h,
+                  width: 35.0.h,
+                  decoration: BoxDecoration(
+                    color: AppCon.color.scaffoldBGColor,
+                    border: Border.all(color: AppCon.color.scaffoldBGColor),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5.0.h),
+                    ),
+                  ),
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    size: 14.0.h,
+                    color: AppCon.color.primaryColor,
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      height: 40.0.h,
+                      width: 52.0.h,
+                      decoration: BoxDecoration(
+                        color: AppCon.color.scaffoldBGColor,
+                        border: Border.all(color: AppCon.color.scaffoldBGColor),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5.0.h),
+                        ),
+                      ),
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 14.0.h,
+                        color: AppCon.color.primaryColor,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5.0.h,
+                    ),
+                    Container(
+                      color: Colors.blue,
+                      height: 30.0.h,
+                      width: 50.0.h,
+                      child: Text(
+                        "Media, Mousic & Books",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        style: TextStyle(
+                            color: AppCon.color.scaffoldBGColor,
+                            fontSize: 9.0.sp),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// home page view all
+  Widget homeFeaturedAndViewAllInRow() {
     return Row(
       children: [
-        Column(
-          children: [
-            Container(
-              color: Colors.orange[300],
-              child: const Icon(Icons.home),
+        Text(
+          AppCon.string.featuredProducts,
+          style: TextStyle(color: AppCon.color.primaryColor),
+        ),
+        const Spacer(),
+        Container(
+          height: 25.0.h,
+          width: 65.0.h,
+          decoration: BoxDecoration(
+            color: AppCon.color.primaryColor,
+            border: Border.all(color: AppCon.color.scaffoldBGColor),
+            borderRadius: BorderRadius.all(
+              Radius.circular(5.0.h),
             ),
-            const Text("Top Seller"),
-          ],
+          ),
+          child: Center(
+            child: Text(
+              AppCon.string.viewAll,
+              style: TextStyle(color: AppCon.color.scaffoldBGColor),
+            ),
+          ),
         )
       ],
+    );
+  }
+
+  /// product added to card, title,image,price,delete,++,--
+  Widget cardInProduct() {
+    return Card(
+      child: Row(children: [
+        Expanded(
+          flex: 4,
+          child: Container(
+            height: 100.0.h,
+            color: const Color.fromARGB(255, 209, 194, 194),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("hellojfgd djfbdjkb dkfjn dkgjfnjj"),
+                Text(
+                  "৳ 180",
+                  style: TextStyle(
+                    color: AppCon.color.primaryColor,
+                  ),
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 147, 153, 158),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5.0.h),
+                        ),
+                      ),
+                      height: 30.0.h,
+                      width: 30.0.h,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.add),
+                      ),
+                    ),
+                    Text(
+                      "2",
+                      style: TextStyle(
+                        color: AppCon.color.primaryColor,
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 147, 153, 158),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5.0.h),
+                        ),
+                      ),
+                      height: 30.0.h,
+                      width: 30.0.h,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.remove,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 147, 153, 158),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5.0.h),
+                        ),
+                      ),
+                      height: 30.0.h,
+                      width: 30.0.h,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.delete,
+                          color: AppCon.color.primaryColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Container(
+            height: 100.0.h,
+            color: Colors.yellow,
+            child: Image.asset(AppCon.images.bdlogo),
+          ),
+        ),
+      ]),
+    );
+  }
+
+  /// card page, view added product in card view list, in bottom total amount and placeed order.
+  Widget addToCardProductListView() {
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Column(
+        children: [
+          Expanded(
+            flex: 5,
+            child: Column(
+              children: [
+                Container(
+                  height: 110.0.h,
+                  width: double.infinity,
+                  color: Colors.red,
+                  child: cardInProduct(),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              color: Colors.green,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Container(
+                      height: 30.0.h,
+                      color: AppCon.color.primaryColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Row(
+                          children: [
+                            Text(
+                              AppCon.string.totalAmount,
+                              style: TextStyle(
+                                  color: AppCon.color.scaffoldBGColor),
+                            ),
+                            const Spacer(),
+                            Text(
+                              "- - -",
+                              style: TextStyle(
+                                  color: AppCon.color.scaffoldBGColor),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: AppCon.widget.elevatedButtonLogin(
+                        width: double.infinity,
+                        text: AppCon.string.proceedToOrder,
+                        onPressed: () {}),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
   /// CarouselWithIndicator
 
   /// home middel carousel_slider
-  Widget homesecondCarouselSlider() {
+  Widget homeSecondCarouselSlider({required double viewportFraction}) {
     return CarouselSlider(
       options: CarouselOptions(
         height: 120.0,
         aspectRatio: 16 / 9,
-        viewportFraction: 0.6,
+        viewportFraction: viewportFraction,
         initialPage: 0,
         enableInfiniteScroll: true,
         reverse: false,
@@ -446,41 +1048,7 @@ class AppWidget {
     );
   }
 
-  /// home thried carousel_slider
-  Widget homethirdCarouselSlider() {
-    return CarouselSlider(
-      options: CarouselOptions(
-        height: 120.0,
-        aspectRatio: 16 / 6,
-        viewportFraction: 0.9,
-        initialPage: 0,
-        enableInfiniteScroll: true,
-        reverse: false,
-        autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 3),
-        autoPlayAnimationDuration: const Duration(milliseconds: 800),
-        autoPlayCurve: Curves.fastOutSlowIn,
-        enlargeCenterPage: true,
-        scrollDirection: Axis.horizontal,
-      ),
-      items: [1, 2, 3, 4, 5].map((i) {
-        return Builder(
-          builder: (BuildContext context) {
-            return Container(
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                decoration: const BoxDecoration(color: Colors.amber),
-                child: Text(
-                  'text $i',
-                  style: const TextStyle(fontSize: 16.0),
-                ));
-          },
-        );
-      }).toList(),
-    );
-  }
-
-  ///Profile list Tile
+  ///Profile pagee, list Tile with tile color, shape, icon color, text color and on tap funtion.
   Widget profileListTile(
       {required Widget leading,
       required String title,
@@ -488,11 +1056,13 @@ class AppWidget {
       required Widget trailing,
       void Function()? onTap,
       ShapeBorder? shape,
-      Color? tileColor}) {
+      Color? tileColor,
+      Color? textColor,
+      Color? iconColor}) {
     return ListTile(
         onTap: onTap,
-        textColor: Colors.black87,
-        iconColor: const Color.fromARGB(115, 37, 22, 22),
+        textColor: textColor,
+        iconColor: iconColor,
         shape: shape,
         tileColor: tileColor,
         leading: CircleAvatar(
@@ -500,35 +1070,6 @@ class AppWidget {
           foregroundColor: AppCon.color.primaryColor,
           radius: 30,
           child: leading,
-        ),
-        title: Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0),
-          textScaleFactor: 1.5,
-        ),
-        subtitle: Text(
-          subtitle,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0),
-        ),
-        trailing: trailing);
-  }
-
-  ///Profile listtile with  tile color, shape and text color white.
-  Widget profileListTilecolor({
-    required Widget leading,
-    required String title,
-    String subtitle = "",
-    required Widget trailing,
-  }) {
-    return ListTile(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        tileColor: AppCon.color.primaryColor,
-        textColor: Colors.white,
-        iconColor: Colors.white,
-        leading: CircleAvatar(
-          backgroundColor: const Color.fromARGB(255, 224, 161, 141),
-          foregroundColor: AppCon.color.primaryColor,
-          radius: 30,
         ),
         title: Text(
           title,
@@ -555,6 +1096,8 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: SizedBox(
+        height: 200.0.h,
+        width: double.infinity,
         child: Column(children: [
           Expanded(
             child: CarouselSlider(
