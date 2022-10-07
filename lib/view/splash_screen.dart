@@ -42,17 +42,14 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
           ),
-          SizedBox(
-            height: 20.h,
-          ),
+          AppCon.widget.verticalSpace(height: 20),
           Text(
             AppCon.string.version,
             style: GoogleFonts.roboto(
-              textStyle: TextStyle(
-                  color: AppCon.color.textColorSplashScreen,
-                  fontSize: 16,
-                  letterSpacing: .5),
-            ),
+                textStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    color: AppCon.color.textColorSplashScreen,
+                    fontSize: 16,
+                    letterSpacing: .5)),
           ),
           Text(
             AppCon.string.versionNAme,
@@ -63,9 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   letterSpacing: .5),
             ),
           ),
-          SizedBox(
-            height: 30.h,
-          ),
+          AppCon.widget.verticalSpace(height: 30),
           SizedBox(
             height: 30.h,
             width: 300.w,

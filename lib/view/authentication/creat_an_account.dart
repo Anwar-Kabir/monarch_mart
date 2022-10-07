@@ -62,55 +62,42 @@ class CreatAnAccount extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              height: 10.h,
+                            AppCon.widget.verticalSpace(height: 10.h),
+                            Text(
+                              AppCon.string.creatAnAccount,
+                              style: Theme.of(context).textTheme.bodyText1,
                             ),
-                            Text(AppCon.string.creatAnAccount,
-                                style: TextStyle(
-                                    color: AppCon.color.scaffoldBGColor)),
-                            SizedBox(
-                              height: 10.h,
-                            ),
+                            AppCon.widget.verticalSpace(height: 10.h),
                             AppWidget().loginIDandCreateAccountTextField(
                                 keyboardType: TextInputType.text,
                                 textAlign: TextAlign.center,
                                 textAlignVertical: TextAlignVertical.center,
                                 hint: "Enter Your Name"),
-                            SizedBox(
-                              height: 10.h,
-                            ),
+                            AppCon.widget.verticalSpace(height: 10.h),
                             AppWidget().loginIDandCreateAccountTextField(
                                 keyboardType: TextInputType.number,
                                 textAlign: TextAlign.center,
                                 textAlignVertical: TextAlignVertical.center,
                                 hint: "Enter Your Phone"),
-                            SizedBox(
-                              height: 10.h,
-                            ),
+                            AppCon.widget.verticalSpace(height: 10.h),
                             AppWidget().loginIDandCreateAccountTextField(
                                 keyboardType: TextInputType.text,
                                 textAlign: TextAlign.center,
                                 textAlignVertical: TextAlignVertical.center,
                                 hint: "Enter Your Email"),
-                            SizedBox(
-                              height: 10.h,
-                            ),
+                            AppCon.widget.verticalSpace(height: 10.h),
                             AppWidget().loginIDandCreateAccountTextField(
                                 keyboardType: TextInputType.text,
                                 textAlign: TextAlign.center,
                                 textAlignVertical: TextAlignVertical.center,
                                 hint: "Enter Your Password"),
-                            SizedBox(
-                              height: 10.h,
-                            ),
+                            AppCon.widget.verticalSpace(height: 10.h),
                             AppWidget().loginIDandCreateAccountTextField(
                                 keyboardType: TextInputType.text,
                                 textAlign: TextAlign.center,
                                 textAlignVertical: TextAlignVertical.center,
                                 hint: "Confirm Password"),
-                            SizedBox(
-                              height: 10.h,
-                            ),
+                            AppCon.widget.verticalSpace(height: 10.h),
                           ],
                         ),
                       ),
@@ -119,9 +106,7 @@ class CreatAnAccount extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 10.h,
-            ),
+            AppCon.widget.verticalSpace(height: 10.h),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -131,7 +116,7 @@ class CreatAnAccount extends StatelessWidget {
                     child: Center(
                       child: Text(
                         AppCon.string.creatAnAccount,
-                        style: TextStyle(color: AppCon.color.scaffoldBGColor),
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
                     colorBorder: AppCon.color.primaryColor,
@@ -139,9 +124,7 @@ class CreatAnAccount extends StatelessWidget {
                     height: 45.0.h),
               ),
             ),
-            SizedBox(
-              height: 10.h,
-            ),
+            AppCon.widget.verticalSpace(height: 10.h),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -153,7 +136,7 @@ class CreatAnAccount extends StatelessWidget {
                     child: Center(
                       child: Text(
                         AppCon.string.alreadyRegistered,
-                        style: TextStyle(color: AppCon.color.scaffoldBGColor),
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
                     colorBorder: AppCon.color.primaryColor,

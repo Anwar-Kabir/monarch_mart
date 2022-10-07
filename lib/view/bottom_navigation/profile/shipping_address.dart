@@ -90,9 +90,7 @@ class _ShippingAdressState extends State<ShippingAdress> {
                           backgroundColor: AppCon.color.addressCancelbutton),
                       barrierDismissible: false);
                 }),
-            const SizedBox(
-              height: 20,
-            ),
+            AppCon.widget.verticalSpace(height: 20.h),
             Align(
                 alignment: Alignment.center,
                 child: Text(AppCon.string.noadress)),
