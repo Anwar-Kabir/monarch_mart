@@ -61,6 +61,29 @@ final List<Widget> imageSliders = imgList
 class AppWidget {
   ///Type - Widget Diolog, for - checking app update available or not, date - October 2, 2022
 
+
+ Widget verticalSpace({
+    double? height,
+  }) {
+    return SizedBox(
+      height: height,
+    );
+  }
+
+  Widget commonAppBar({Widget? title,}) {
+    return ListTile(
+      leading: IconButton(onPressed: (){}, 
+       icon: const Icon(Icons.menu),
+       
+       ),
+       title: title,
+       trailing: IconButton(onPressed: (){}, 
+       icon: const Icon(Icons.search),
+       
+       ),
+    );
+  }
+
   Widget isUpdateAvailable({context}) {
     return AlertDialog(
       title: Text(
