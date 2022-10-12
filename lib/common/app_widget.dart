@@ -59,18 +59,6 @@ final List<Widget> imageSliders = imgList
     .toList();
 
 class AppWidget {
-  ///commonAppBar
-
-  Widget commonAppBar({
-    Widget? title,
-  }) {
-    return ListTile(
-      leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
-      title: title,
-      trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-    );
-  }
-
   ///Type - Widget Diolog, for - checking app update available or not, date - October 2, 2022
 
   Widget isUpdateAvailable({context}) {
@@ -111,10 +99,6 @@ class AppWidget {
             borderRadius: BorderRadius.all(Radius.circular(4)),
             borderSide: BorderSide(width: 1, color: Colors.grey),
           ),
-          /* enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: Colors.grey),
-          ), */
           isDense: true,
           contentPadding: const EdgeInsets.all(8),
           filled: true,
@@ -135,7 +119,7 @@ class AppWidget {
         width: 91.0.h,
         child: Row(
           children: [
-            SizedBox(width: 10.0.h),
+            SizedBox(width: 7.0.h),
             SizedBox(
               height: 25.0.h,
               width: 25.0.h,
@@ -401,7 +385,7 @@ class AppWidget {
         decoration: BoxDecoration(
           color: colorBG,
           borderRadius: const BorderRadius.all(
-            Radius.circular(10),
+            Radius.circular(15),
           ),
           border: Border.all(
             color: colorBorder,
@@ -613,7 +597,7 @@ class AppWidget {
   ///product in card  view
   Widget homeproductview() {
     return SizedBox(
-      height: 220.h,
+      height: 230.h,
       width: 190.h,
       child: Card(
         color: AppCon.color.scaffoldBGColor,
@@ -856,7 +840,8 @@ class AppWidget {
           child: Center(
             child: Text(
               AppCon.string.viewAll,
-              style: TextStyle(color: AppCon.color.scaffoldBGColor),
+              style: TextStyle(
+                  color: AppCon.color.scaffoldBGColor, fontSize: 12.0.sp),
             ),
           ),
         )
@@ -1061,16 +1046,18 @@ class AppWidget {
   }
 
   ///Profile pagee, list Tile with tile color, shape, icon color, text color and on tap funtion.
-  Widget profileListTile(
-      {required Widget leading,
-      required String title,
-      String subtitle = "",
-      required Widget trailing,
-      void Function()? onTap,
-      ShapeBorder? shape,
-      Color? tileColor,
-      Color? textColor,
-      Color? iconColor}) {
+  Widget profileListTile({
+    required Widget leading,
+    required String title,
+    String subtitle = "",
+    required Widget trailing,
+    void Function()? onTap,
+    ShapeBorder? shape,
+    Color? tileColor,
+    Color? textColor,
+    Color? iconColor,
+    Color? focusColor,
+  }) {
     return ListTile(
         onTap: onTap,
         textColor: textColor,
@@ -1085,12 +1072,13 @@ class AppWidget {
         ),
         title: Text(
           title,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 11.0),
           textScaleFactor: 1.5,
         ),
         subtitle: Text(
           subtitle,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0),
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 12.0, color: focusColor),
         ),
         trailing: trailing);
   }

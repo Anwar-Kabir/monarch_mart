@@ -31,13 +31,13 @@ class AppString {
 
   //login page text
   final String login = "Login";
-  final String enterYourMobileNumber = "Enter Your Mobilr Number";
+  final String enterYourMobileNumber = "Enter Your Mobile Number";
   final String countryCode = "+88";
   final String loginWithOTP = "Login with OTP";
   final String or = "or";
   final String loginWithUserID = "Login with User ID";
   final String dontHaveAnAccount = "Don't have an account ?";
-  final String creatAnAccount = "Creat an account";
+  final String creatAnAccount = "Create an account";
   final String moreSettings = "More settings";
 
   ///sign up page

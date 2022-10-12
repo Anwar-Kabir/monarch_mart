@@ -16,7 +16,8 @@ class LoginWithUserID extends StatelessWidget {
           padding: EdgeInsets.all(8.0.h),
           child: Column(
             children: [
-              AppCon.widget.backbuttonPrimaryColor(),
+              AppCon.widget
+                  .backbuttonPrimaryColor(coloricon: AppCon.color.primaryColor),
               Expanded(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
@@ -39,9 +40,7 @@ class LoginWithUserID extends StatelessWidget {
                         hint: "Enter Your Email",
                       ),
                     ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
+                    AppCon.widget.verticalSpace(height: 10.h),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: AppWidget().loginIDandCreateAccountTextField(
@@ -50,9 +49,7 @@ class LoginWithUserID extends StatelessWidget {
                           textAlignVertical: TextAlignVertical.center,
                           hint: "Enter Your Password"),
                     ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
+                    AppCon.widget.verticalSpace(height: 10.h),
                     AppCon.widget.customContainerButton(
                         onTap: () {
                           Get.to(const LoginWithUserID());

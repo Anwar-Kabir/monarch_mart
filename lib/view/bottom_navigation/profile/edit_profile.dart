@@ -24,46 +24,34 @@ class _EditProfileState extends State<EditProfile> {
               children: [
                 AppCon.widget
                     .inAppBackButton(text: AppCon.string.editprofiletitle),
-                SizedBox(
-                  height: 150.0.h,
-                ),
+                AppCon.widget.verticalSpace(height: 150.h),
                 const Divider(
                   color: Colors.black45,
                   thickness: 1.0,
                 ),
-                SizedBox(
-                  height: 10.h,
-                ),
+                AppCon.widget.verticalSpace(height: 10.h),
                 Text(
                   AppCon.string.basicInformation,
-                  style: TextStyle(color: AppCon.color.primaryColor),
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
-                SizedBox(
-                  height: 15.h,
-                ),
+                AppCon.widget.verticalSpace(height: 15.h),
                 Text(
                   AppCon.string.name,
-                  style: TextStyle(color: AppCon.color.primaryColor),
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
-                SizedBox(
-                  height: 10.h,
-                ),
+                AppCon.widget.verticalSpace(height: 10.h),
                 AppCon.widget.editprofileTextField(),
                 Text(
                   AppCon.string.password,
-                  style: TextStyle(color: AppCon.color.primaryColor),
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
                 AppCon.widget.editprofileTextField(
                     obscureText: true,
                     helpertext: AppCon.string.passwordhelper),
-                SizedBox(
-                  height: 10.h,
-                ),
+                AppCon.widget.verticalSpace(height: 10.h),
                 Text(AppCon.string.passConform,
-                    style: TextStyle(color: AppCon.color.primaryColor)),
-                SizedBox(
-                  height: 10.h,
-                ),
+                    style: Theme.of(context).textTheme.bodySmall),
+                AppCon.widget.verticalSpace(height: 10.h),
                 AppCon.widget.editprofileTextField(
                   obscureText: true,
                 ),

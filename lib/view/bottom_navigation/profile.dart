@@ -81,6 +81,7 @@ class _ProfileState extends State<Profile> {
                   leading: const Icon(Icons.person),
                   title: "My Account",
                   subtitle: "Make changes to your account",
+                  focusColor: AppCon.color.inputFieldBackground,
                   trailing: const Icon(Icons.arrow_forward_ios,
                       color: Colors.black87),
                 ),
@@ -91,6 +92,7 @@ class _ProfileState extends State<Profile> {
                   leading: const Icon(Icons.person),
                   title: "Order History",
                   subtitle: "Take a look at your Orders",
+                  focusColor: AppCon.color.inputFieldBackground,
                   trailing: const Icon(Icons.arrow_forward_ios,
                       color: Colors.black87),
                 ),
@@ -103,6 +105,7 @@ class _ProfileState extends State<Profile> {
                   leading: const Icon(Icons.person),
                   title: "Shipping Address",
                   subtitle: "Change or add your address",
+                  focusColor: AppCon.color.inputFieldBackground,
                   trailing: const Icon(Icons.arrow_forward_ios,
                       color: Colors.black87),
                 ),
@@ -124,6 +127,7 @@ class _ProfileState extends State<Profile> {
                   leading: const Icon(Icons.person),
                   title: "Logout",
                   subtitle: "Logout from your account",
+                  focusColor: AppCon.color.inputFieldBackground,
                   trailing: const Icon(Icons.arrow_forward_ios,
                       color: Colors.black87),
                 ),
@@ -131,13 +135,11 @@ class _ProfileState extends State<Profile> {
                   padding: const EdgeInsets.all(15.0),
                   child: Align(
                     alignment: Alignment.topLeft,
-                    child: Text(
-                      AppCon.string.moreSettings,
-                      style: const TextStyle(
-                          fontSize: 19.0,
-                          color: Colors.black87,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    child: Text(AppCon.string.moreSettings,
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            fontSize: 19.0,
+                            color: Colors.black87,
+                            fontWeight: FontWeight.bold)),
                   ),
                 ),
                 AppWidget().profileListTile(
