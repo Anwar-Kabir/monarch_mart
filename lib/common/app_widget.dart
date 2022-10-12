@@ -60,9 +60,7 @@ final List<Widget> imageSliders = imgList
 
 class AppWidget {
   ///Type - Widget Diolog, for - checking app update available or not, date - October 2, 2022
-
-
- Widget verticalSpace({
+  Widget verticalSpace({
     double? height,
   }) {
     return SizedBox(
@@ -1033,7 +1031,6 @@ class AppWidget {
   }
 
   /// CarouselWithIndicator
-
   /// home middel carousel_slider
   Widget homeSecondCarouselSlider({required double viewportFraction}) {
     return CarouselSlider(
