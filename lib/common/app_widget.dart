@@ -59,6 +59,18 @@ final List<Widget> imageSliders = imgList
     .toList();
 
 class AppWidget {
+  ///commonAppBar
+
+  Widget commonAppBar({
+    Widget? title,
+  }) {
+    return ListTile(
+      leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+      title: title,
+      trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+    );
+  }
+
   ///Type - Widget Diolog, for - checking app update available or not, date - October 2, 2022
 
   Widget isUpdateAvailable({context}) {
@@ -974,7 +986,7 @@ class AppWidget {
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Container(
-                      height: 30.0.h,
+                      height: 27.0.h,
                       color: AppCon.color.primaryColor,
                       child: Padding(
                         padding: const EdgeInsets.all(5.0),
@@ -997,7 +1009,7 @@ class AppWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(2.0),
                     child: AppCon.widget.elevatedButtonLogin(
                         width: double.infinity,
                         text: AppCon.string.proceedToOrder,

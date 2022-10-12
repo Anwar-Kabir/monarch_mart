@@ -12,7 +12,17 @@ class _CardMonarchState extends State<CardMonarch> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(body: AppCon.widget.addToCardProductListView()),
+      child: Scaffold(
+          body: Column(
+        children: [
+          AppCon.widget.commonAppBar(
+              title: Text(
+            "Your Card",
+            style: Theme.of(context).textTheme.bodyMedium,
+          )),
+          Expanded(child: AppCon.widget.addToCardProductListView()),
+        ],
+      )),
     );
   }
 }

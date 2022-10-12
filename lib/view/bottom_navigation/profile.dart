@@ -28,6 +28,12 @@ class _ProfileState extends State<Profile> {
             scrollDirection: Axis.vertical,
             child: Column(
               children: [
+                AppCon.widget.commonAppBar(
+                    title: Text(
+                  "Profile",
+                  style: Theme.of(context).textTheme.bodyMedium,
+                )),
+
                 ///all elevatedButton for UI test
                 ElevatedButton(
                   onPressed: () {
@@ -36,6 +42,7 @@ class _ProfileState extends State<Profile> {
                   child: const Text("Go - login and logout page"),
                 ),
 
+                 
                 ///this update check diolog not working on elevated Button
                 ElevatedButton(
                   onPressed: () {
@@ -44,6 +51,8 @@ class _ProfileState extends State<Profile> {
                   child: const Text("Go - update check diolog"),
                 ),
 
+                
+
                 ///check out page UI
                 ElevatedButton(
                   onPressed: () {
@@ -51,6 +60,8 @@ class _ProfileState extends State<Profile> {
                   },
                   child: const Text("Go - check out page"),
                 ),
+
+                 
                 AppWidget().profileListTile(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),

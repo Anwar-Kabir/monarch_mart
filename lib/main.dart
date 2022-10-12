@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:monarch_mart/common/app_dep_inj.dart';
+import 'package:monarch_mart/common/config.dart';
 import 'package:monarch_mart/view/splash_screen.dart';
 
 void main() {
@@ -32,6 +33,12 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Demo',
             theme: ThemeData(
               primarySwatch: Colors.blue,
+              textTheme: TextTheme(
+                
+                bodySmall: const TextStyle(fontSize: 18.0, fontFamily: 'Hind'),
+                bodyMedium:
+                    TextStyle(fontSize: 17.0, color: AppCon.color.primaryColor),
+              ),
             ),
             home: const SplashScreen(),
           )),
